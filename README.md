@@ -1,13 +1,3 @@
-
-practice project: containerized, tested in CI, and deployable to Kubernetes.
-
-## Features
-
-- Multi-room real-time chat 
-- Message history persisted in SQLite, replayed on join/reconnect
-- `/health` (liveness) and `/ready` (readiness, checks DB) endpoints
-- `/metrics` Prometheus endpoint (messages sent, connected clients, HTTP requests)
-- Dockerfile, docker-compose, basic Kubernetes manifests
 -
 
 ## Run locally
