@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flask Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Flask Chat</h1>
+      <span class="room-label" id="room-label"></span>
+      <span class="version">v{{ version }}</span>
+    </header>
+
+    <form id="join-form" class="join">
+      <input id="username" placeholder="Your name" maxlength="32" required autocomplete="off">
+      <input id="room" placeholder="Room (default: general)" maxlength="32" autocomplete="off">
+      <button type="submit">Join</button>
+    </form>
+
+    <section id="chat" class="chat hidden">
+      <ul id="messages" class="messages"></ul>
+      <div id="typing" class="typing"></div>
+      <form id="message-form" class="composer">
+        <input id="message" placeholder="Type a message…" maxlength="1000" autocomplete="off">
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>

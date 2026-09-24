@@ -1,0 +1,31 @@
+# Basic Kubernetes Deployment for the Flask chat app
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-chat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-chat
+  template:
+    metadata:
+      labels:
+        app: flask-chat
+    spec:
+      containers:
+        - name: web
+          image: flask-chat-app:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: SECRET_KEY
+              value: "change-me-in-real-deployments"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 5000

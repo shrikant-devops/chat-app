@@ -1,0 +1,15 @@
+# NodePort Service: exposes the app on every node's IP at a fixed port
+# (default NodePort range is 30000-32767), so you can reach it without
+# port-forward, e.g. http://<node-ip>:30500
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-chat
+spec:
+  selector:
+    app: flask-chat
+  ports:
+    - port: 80
+      targetPort: 5000
+      nodePort: 30500
+  type: NodePort

@@ -1,0 +1,14 @@
+# Basic docker-compose: just build and run the app on port 5000
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      SECRET_KEY: dev-secret-change-me
+      DATABASE_PATH: /data/chat.db
+    volumes:
+      - chat-data:/data
+
+volumes:
+  chat-data:
